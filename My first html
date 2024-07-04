@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shifu's Personal Webpage</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4682b4;
+            color: white;
+            padding: 1em;
+            text-align: center;
+        }
+        main {
+            padding: 2em;
+        }
+        .content {
+            max-width: 800px;
+            margin: auto;
+        }
+        .section {
+            margin-bottom: 2em;
+        }
+        .section h2 {
+            color: #4682b4;
+            border-bottom: 2px solid #4682b4;
+            padding-bottom: 0.5em;
+        }
+        .games-section h3, .jokes-section h3, .about-section h3, .contact-section h3 {
+            color: #4682b4;
+        }
+        footer {
+            background-color: #4682b4;
+            color: white;
+            text-align: center;
+            padding: 1em;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        .game, .joke, .contact-section {
+            margin-bottom: 1em;
+        }
+        .joke-answer {
+            display: none;
+        }
+        .joke-input {
+            margin-right: 1em;
+        }
+        .jokes-section, .games-section, .about-section, .contact-section {
+            background-color: #f0f8ff;
+            padding: 1em;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    <script>
+        const jokes = [
+            { question: "Why don't scientists trust atoms?", answer: "Because they make up everything!" },
+            { question: "Why did the scarecrow win an award?", answer: "Because he was outstanding in his field!" },
+            { question: "Why don't skeletons fight each other?", answer: "They don't have the guts!" },
+            { question: "Why did the bicycle fall over?", answer: "Because it was two-tired!" },
+            { question: "What do you call fake spaghetti?", answer: "An impasta!" },
+            // Add more jokes as needed
+        ];
+
+        let currentJokeIndex = 0;
+
+        function displayJoke() {
+            const joke = jokes[currentJokeIndex];
+            document.getElementById('jokeQuestion').innerText = joke.question;
+            document.getElementById('jokeInput').value = '';
+            document.getElementById('jokeFeedback').innerText = '';
+        }
+
+        function checkJokeAnswer() {
+            const joke = jokes[currentJokeIndex];
+            const userAnswer = document.getElementById('jokeInput').value.trim();
+            const feedback = userAnswer.toLowerCase() === joke.answer.toLowerCase() ? "Correct! Well done!" : "Incorrect. The correct answer is: " + joke.answer;
+            document.getElementById('jokeFeedback').innerText = feedback;
+        }
+
+        function nextJoke() {
+            currentJokeIndex = (currentJokeIndex + 1) % jokes.length;
+            displayJoke();
+        }
+
+        window.onload = displayJoke;
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Shifu's Personal Webpage</h1>
+    </header>
+    <main>
+        <div class="content">
+            <div class="about-section section">
+                <h2>About Me</h2>
+                <p>Hi, I'm Shihan, but you can call me Shifu. I'm 13 years old and passionate about football, dreaming of becoming a professional football player. When I'm not on the field, I enjoy solving riddles and sharing jokes. I'm just a beginner, but my hobbies keep me active and entertained. I love connecting with people who share similar interests.</p>
+            </div>
+            <div class="games-section section">
+                <h2>Games</h2>
+                <div class="game">
+                    <h3>Play Chess</h3>
+                    <iframe src="https://www.chess.com/widget/game/live" width="600" height="400" style="border:0;"></iframe>
+                </div>
+                <div class="game">
+                    <h3>Play Tic Tac Toe</h3>
+                    <iframe src="https://playtictactoe.org/" width="300" height="300" style="border:0;"></iframe>
+                </div>
+                <div class="game">
+                    <h3>Play Snake</h3>
+                    <iframe src="https://playsnake.org/" width="600" height="400" style="border:0;"></iframe>
+                </div>
+                <div class="game">
+                    <h3>Play Minesweeper</h3>
+                    <iframe src="https://minesweeperonline.com/#beginner" width="600" height="400" style="border:0;"></iframe>
+                </div>
+            </div>
+            <div class="jokes-section section">
+                <h2>Jokes</h2>
+                <div class="joke">
+                    <p id="jokeQuestion"></p>
+                    <input id="jokeInput" type="text" class="joke-input">
+                    <button onclick="checkJokeAnswer()">Submit Answer</button>
+                    <p id="jokeFeedback"></p>
+                </div>
+                <button onclick="nextJoke()">Next Joke</button>
+            </div>
+            <div class="contact-section section">
+                <h2>Get in Touch</h2>
+                <p>If you want to chat about football, riddles, or anything else, feel free to reach out. I'm always excited to meet new people and make new friends. You can contact me at: <a href="mailto:shihanmuhammed64@gmail.com">shihanmuhammed64@gmail.com</a></p>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Shifu's Personal Webpage</p>
+    </footer>
+</body>
+</html>
